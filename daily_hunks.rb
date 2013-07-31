@@ -1,13 +1,18 @@
-require 'sinatra'
-require 'json'
+require "sinatra"
+require "json"
 
-get '/edition/' do
+# Fetch data for page.
+get "/edition/" do
+  thread_id = "test"
+
+  etag Digest::MD5.hexdigest(thread_id)
+  erb :hunk
 end
 
-get '/sample/' do
+# Send sample hunk.
+get "/sample/" do
+  thread_id = "sample"
+
+  etag Digest::MD5.hexdigest(thread_id)
+  erb :hunk
 end
-
-post '/validate_config/' do
-end
-
-
