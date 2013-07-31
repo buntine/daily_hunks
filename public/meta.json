@@ -1,0 +1,10 @@
+{
+"owner_email" : "bunts@hhd.com.au",
+"publication_api_version":"1.0",
+"name": "Hunk of the day",
+"description": "A daily dose of man-meat.",
+"delivered_on": "every day",
+"send_timezone_info": false,
+"send_delivery_count": false,
+"external_configuration": false,
+}
