@@ -25,8 +25,9 @@ class LadyBoners
 
   def find_image(threads)
     threads.find do |t|
-      url = t["data"]["url"]
-      @accept.include?(File.extname(URI.parse(url).path)[1, 3])
+      data = t["data"]
+      url = data["url"]
+      @accept.include?(File.extname(URI.parse(url).path)[1, 3]) and !data["over_18"]
     end
   end
 

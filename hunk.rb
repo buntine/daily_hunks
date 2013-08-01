@@ -13,7 +13,7 @@ class Hunk
     image = Image.read(@file).first
     image.resize_to_fit!(width, height)
     image = image.posterize(4)
-    path = File.join(@save_path, "#{Time.now.to_i}.#{@file.split(".").last}")
+    path = File.join(@save_path, "#{Time.now.to_i}#{File.extname(@file)}")
     image.write(path)
 
     path
