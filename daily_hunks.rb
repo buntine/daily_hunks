@@ -1,15 +1,21 @@
 require "sinatra"
-require "json"
+require "active_support/core_ext/integer/inflections"
+require "./lady_boners"
+require "./hunk"
 
 # Fetch data for page.
 get "/edition/" do
-  thread_id = "test"
+  lb = LadyBoners.new
+  result = lb.get_result
 
   # Get image and save locally.
-  # Treat image.
-  # Create etag using thread id.
 
-  etag Digest::MD5.hexdigest(thread_id)
+  hunk = Hunk.new(image)
+  @image = hunk.treat
+
+  # Delete temp image.
+
+  etag Digest::MD5.hexdigest(result["name"])
   erb :hunk
 end
 
@@ -19,21 +25,4 @@ get "/sample/" do
 
   etag Digest::MD5.hexdigest(thread_id)
   erb :hunk
-end
-
-helpers do
-  class Fixnum
-    def ordinalize
-      if (11..13).include?(self % 100)
-        "#{self}th"
-      else
-        case self % 10
-          when 1; "#{self}st"
-          when 2; "#{self}nd"
-          when 3; "#{self}rd"
-          else    "#{self}th"
-        end
-      end
-    end
-  end
 end
