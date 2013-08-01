@@ -1,6 +1,8 @@
 require "fileutils"
+require "RMagick"
 
 class Hunk
+  include Magick
 
   def initialize(file)
     @file = file
@@ -8,12 +10,11 @@ class Hunk
   end
 
   def treat(width=360, height=550)
-    # Resize image.
-    # Greyscale image.
-    # Save using timestamp.
+    image = Image.read(@file).first
+    image.resize_to_fit!(width, height)
+    image = image.posterize(4)
     path = File.join(@save_path, "#{Time.now.to_i}.jpg")
-
-    FileUtils.cp(@file, path)
+    image.write(path)
 
     path
   end

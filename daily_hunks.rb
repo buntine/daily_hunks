@@ -1,6 +1,7 @@
 require "sinatra"
 require "active_support/core_ext/integer/inflections"
 require "open-uri"
+require "fileutils"
 require "./lady_boners"
 require "./hunk"
 
@@ -19,6 +20,8 @@ get "/edition/" do
   @image = hunk.treat.gsub("./public", "")
 
   # Delete temp image.
+  FileUtils.rm(path)
+
   etag Digest::MD5.hexdigest(result["name"])
   erb :hunk
 end
