@@ -5,7 +5,7 @@ require "fileutils"
 require "./lady_boners"
 require "./hunk"
 
-# Fetch data for page.
+# Fetch hunk for page.
 get "/edition/" do
   lb = LadyBoners.new
   result = lb.get_result
@@ -28,9 +28,10 @@ end
 
 # Send sample hunk.
 get "/sample/" do
-  thread_id = "sample"
+  @image = "/sample.png"
 
-  etag Digest::MD5.hexdigest(thread_id)
+  thread_id = "sample"
+  etag Digest::MD5.hexdigest("sample")
   erb :hunk
 end
 
