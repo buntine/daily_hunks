@@ -1,3 +1,5 @@
+require "fileutils"
+
 class Hunk
 
   def initialize(file)
@@ -9,6 +11,11 @@ class Hunk
     # Resize image.
     # Greyscale image.
     # Save using timestamp.
+    path = File.join(@save_path, "#{Time.now.to_i}.jpg")
+
+    FileUtils.cp(@file, path)
+
+    path
   end
 
 end

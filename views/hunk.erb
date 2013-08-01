@@ -24,7 +24,7 @@
   <div id="wrapper">
     <h1>Hunk of the day</h1>
     <h3><%= Time.now.strftime("%B #{Date.today.day.ordinalize}, %Y") %></h3>
-    <img src="/hunk.png" alt="Damn!" />
+    <img src="<%= @image %>" alt="Damn!" />
     <hr />
   </div>
 </body>
