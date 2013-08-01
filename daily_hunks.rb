@@ -36,5 +36,8 @@ get "/sample/" do
 end
 
 def path_for_image(result)
-  "./tmp/image.jpg"
+  url = URI.parse(result["url"])
+  filename = File.basename(url.path)
+
+  "./tmp/#{filename}"
 end
