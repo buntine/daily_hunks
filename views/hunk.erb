@@ -13,7 +13,7 @@
       margin: 0 auto;
       text-align: center;
     }
-    h1 {
+    h1, h3 {
       word-wrap: break-word;
       font-family:sans-serif;
       margin: 10px 0 15px 0;
@@ -23,6 +23,7 @@
 <body>
   <div id="wrapper">
     <h1>Hunk of the day</h1>
+    <h3><%= Time.now.strftime("%B #{Date.today.day.ordinalize}, %Y") %></h3>
     <img src="/hunk.png" alt="Damn!" />
     <hr />
   </div>
